@@ -1,25 +1,51 @@
 import React from 'react';
-import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import home1 from '../img/home1.png';
 
+//style
+import { About, Description, Image, Hide } from '../styles';
+
 const AboutSection = () => {
+  //framer motion variable
+  const titleAnim = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 2 } },
+  };
+  const container = {
+    hidden: { x: 100 },
+    show: {
+      x: 0,
+      transition: {
+        duration: 0.75,
+        ease: 'easeOut',
+        staggerChildren: 1,
+        when:'afterChildren'
+      },
+    },
+  };
+
   return (
     <About>
       <Description>
-        <div className="title">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="title"
+        >
           <Hide>
-            <h2>We Work to make</h2>
+            <motion.h2 variants={titleAnim}>We Work to make</motion.h2>
           </Hide>
           <Hide>
-            <h2>
+            <motion.h2 variants={titleAnim}>
               your <span>dreams</span> come
-            </h2>
+            </motion.h2>
           </Hide>
           <Hide>
-            <h2>true.</h2>
+            <motion.h2 variants={titleAnim}>true.</motion.h2>
           </Hide>
-        </div>
+        </motion.div>
 
         <div>
           <p>
@@ -36,38 +62,5 @@ const AboutSection = () => {
     </About>
   );
 };
-
-// Styled components
-
-const About = styled.div`
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5rem 10rem;
-  color: white;
-`;
-
-const Description = styled.div`
-  flex: 1;
-  padding-right: 5rem;
-  h2 {
-    font-weight: lighter;
-  }
-`;
-
-const Image = styled.div`
-  flex: 1;
-  overflow: hidden;
-  img {
-    width: 100%;
-    height: 80vh;
-    object-fit: cover;
-  }
-`;
-
-const Hide = styled.div`
-  overflow: hidden;
-`;
 
 export default AboutSection;
