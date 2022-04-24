@@ -1,16 +1,24 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+//components
 import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServiceSection';
 import FaqSection from '../components/FaqSection';
-
-
+//pageAnimation
+import { pageAnimation } from '../animation';
 const AboutUs = () => {
   return (
-    <>
+    <motion.div
+      exit="exit"
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+    >
       <AboutSection />
       <ServicesSection />
-      <FaqSection /> 
-    </>
+      <FaqSection />
+    </motion.div>
   );
 };
 export default AboutUs;

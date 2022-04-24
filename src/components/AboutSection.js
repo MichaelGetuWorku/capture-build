@@ -1,39 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import Wave from './Wave';
 import home1 from '../img/home1.png';
 
 //style
 import { About, Description, Image, Hide } from '../styles';
 
+//pageAnimation
+import { titleAnim, fade, photoAnimation } from '../animation';
 const AboutSection = () => {
-  //framer motion variable
-  const titleAnim = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { duration: 2 } },
-  };
-  const container = {
-    hidden: { x: 100 },
-    show: {
-      x: 0,
-      transition: {
-        duration: 0.75,
-        ease: 'easeOut',
-        staggerChildren: 1,
-        when:'afterChildren'
-      },
-    },
-  };
-
   return (
     <About>
       <Description>
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="title"
-        >
+        <motion.div>
           <Hide>
             <motion.h2 variants={titleAnim}>We Work to make</motion.h2>
           </Hide>
@@ -48,17 +28,24 @@ const AboutSection = () => {
         </motion.div>
 
         <div>
-          <p>
+          <motion.p variants={fade}>
             Contact us for any new projects, We have professionals for your
             every needs.
-          </p>
-          <button>Contact us</button>
+          </motion.p>
+          <motion.button variants={fade}>Contact us</motion.button>
         </div>
       </Description>
 
       <Image>
-        <img src={home1} alt="" />
+        <motion.img
+          variants={photoAnimation}
+          // initial="hidden"
+          // animate="show"
+          src={home1}
+          alt=""
+        />
       </Image>
+      <Wave />
     </About>
   );
 };
