@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 const Toggle = ({ children, title }) => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   return (
     <motion.div
       onClick={() => setToggle(!toggle)}
@@ -21,4 +21,3 @@ const Toggle = ({ children, title }) => {
 };
 
 export default Toggle;
-
