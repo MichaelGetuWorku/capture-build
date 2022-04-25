@@ -11,12 +11,15 @@ import MovieDetail from './pages/MovieDetail';
 import GlobalStyle from './components/GlobalStyle';
 //animation
 import { AnimatePresence } from 'framer-motion';
+//hook
+import ScrollTop from './components/ScrollTop';
+
 function App() {
   const location = useLocation(); //like useHistory but it will give us the key of the page we are on
   return (
     <>
-      <BrowserRouter>
         <GlobalStyle />
+        <ScrollTop />
         <Nav />
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
@@ -27,7 +30,6 @@ function App() {
             <Route path="/contact" component={ContactUs} />
           </Switch>
         </AnimatePresence>
-      </BrowserRouter>
     </>
   );
 }
